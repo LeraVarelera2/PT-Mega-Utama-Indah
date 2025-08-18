@@ -1,0 +1,791 @@
+/* 1. Reset dasar */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Tambahan: beri jarak konten dari navbar */
+body {
+  padding-top: 60px; /* tinggi navbar kira-kira 60px */
+  font-family: "Poppins", sans-serif;
+  line-height: 1.5;
+}
+
+/* 2. Navbar */
+.navbar {
+  position: fixed; /* tetap di atas saat scroll */
+  top: 0; /* posisinya di paling atas */
+  left: 0; /* dari kiri */
+  width: 100%;
+  background-color: white; /* background putih */
+  padding: 15px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* biar di atas elemen lain */
+}
+
+/* 3. Container untuk lebar & posisi */
+.container {
+  width: 90%; /* lebar isi */
+  max-width: 1200px; /* batas maksimal */
+  margin: 0 auto; /* tengah secara horizontal */
+  display: flex; /* supaya logo dan menu sejajar */
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 4. Logo */
+.logo {
+  height: 45px; /* tinggi logo */
+  width: auto; /* biar proporsi tidak rusak */
+  margin-right: 10px; /* jarak antara logo & teks */
+  vertical-align: middle; /* sejajarkan dengan teks */
+}
+
+/* 5. Brand (logo) */
+.navbar-brand {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700; /* bold */
+  font-size: 20px;
+  color: black;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* jarak antara logo & teks */
+}
+
+/* 6. Menu */
+.navbar-menu {
+  list-style: none; /* hilangkan bullet */
+  display: flex; /* sejajar ke kanan */
+  gap: 20px; /* jarak antar menu */
+  margin: 0;
+  padding: 0;
+}
+
+/* 7. Link menu */
+.nav-link {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: black;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: #ff4d4d; /* ganti warna saat hover */
+}
+
+/* HOME */
+.home-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-right: 8%;
+  color: white;
+  position: relative;
+  justify-content: flex-end;
+  /*Penting:;
+  Pastikaniniadaagargambaryangbergesertidakmunculdiluarcontainer*/
+  overflow: hidden;
+  /*Menggabungkangradasidanbeberapagambar*/
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400%; /* jumlah slide x 100% */
+  height: 100%;
+  display: flex;
+  z-index: 0; /* slider di bawah pseudo-element */
+}
+
+.home-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+  z-index: 1; /* di atas slider */
+}
+
+.slide {
+  flex: 0 0 25%; /* 100% dibagi jumlah slide */
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Konten di dalam Home Section */
+.home-content {
+  position: relative;
+  z-index: 2;
+  text-align: right;
+  max-width: 650px;
+  margin-top: 100px;
+  padding: 20px;
+}
+
+/* Styling untuk judul dan subtitle */
+.home-content h1 {
+  font-size: 3rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.home-content .subtitle {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+/* Styling untuk Tombol */
+.btn-primary {
+  display: inline-block;
+  background: #ff4d4d;
+  color: white;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #e63939;
+}
+
+/* ABOUT US */
+.about-section {
+  background-color: #fff;
+  padding: 80px 8%;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #5f2c08; /* coklat kayu */
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 50px;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap; /* supaya responsif di HP */
+}
+
+.about-text {
+  flex: 1;
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.about-image {
+  flex: 1;
+  position: relative; /* supaya bisa taruh overlay PNG */
+  max-width: 400px; /* biar nggak terlalu besar */
+  height: 300px; /* tinggi tetap */
+}
+
+.about-image img.main-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.about-image img.overlay-photo {
+  position: absolute;
+  bottom: -35px; /* geser lebih ke bawah */
+  left: -35px; /* geser lebih ke kiri */
+  width: 50%; /* lebih kecil dari sebelumnya */
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== SERVICES SECTION ===== */
+.product-section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.sub-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: #8b4513;
+  text-align: center;
+}
+
+/* Jenis Kayu */
+.sub-title.jenis-kayu {
+  margin-bottom: 20px; /* jarak ke bawah */
+}
+
+.wood-types {
+  margin-bottom: 40px; /* jarak ke Jenis Produk */
+  margin-top: 40px; /* jarak supaya gak nempel ke judul */
+}
+
+/* Jenis Produk */
+.sub-title.jenis-produk {
+  margin-top: 40px; /* jarak dari card kayu */
+  margin-bottom: 20px; /* jarak ke card produk */
+}
+
+.jenisproduk {
+  margin-top: 10px; /* biar gak nempel sama judul */
+}
+
+/* ===== WOOD TYPES GRID - CARD ===== */
+.wood-types {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 0 40px; /* ruang kiri-kanan dari browser */
+}
+
+.wood-card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  padding-bottom: 5px;
+}
+
+.wood-card:hover {
+  transform: translateY(-5px);
+}
+
+.wood-card img {
+  width: 100%;
+  height: 150px; /* biar tetap kecil */
+  object-fit: cover;
+}
+
+.wood-card h3 {
+  padding: 10px;
+  margin: 0;
+}
+
+.see-more {
+  display: block;
+  text-align: right;
+  padding: 0 10px 8px 0;
+  color: #8b5e3c;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.see-more:hover {
+  color: #a97454;
+}
+
+/* ===== JENIS PRODUK SLIDER - CARD ===== */
+.geser {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  padding: 0 40px; /* jarak dari kiri-kanan browser */
+  box-sizing: border-box;
+}
+
+.geser .item {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); /* UBAH */
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  overflow: hidden;
+}
+
+.geser .item .content {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* ini tambahan baru */
+.geser .item .content .name {
+  font-weight: 700; /* bikin tebal */
+  font-size: 1.2rem; /* opsional: agak lebih besar */
+  margin-bottom: 8px; /* kasih jarak dikit dari deskripsi */
+}
+
+.geser .item .content h3 {
+  margin: 0 0 10px;
+  font-size: 1.5rem;
+}
+
+.geser .item .content p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.geser .item .content button {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.geser .item.active {
+  width: 60%;
+  height: 90%;
+  left: 40px; /* jarak dari kiri */
+  z-index: 2;
+}
+
+.geser .item.right {
+  width: 25%;
+  height: 70%;
+  right: 40px; /* jarak dari kanan */
+  z-index: 3; /* supaya numpuk di atas card aktif */
+  opacity: 0.95;
+  transform: translateY(-50%) scale(0.9);
+}
+
+/* [TAMBAHAN] Sembunyikan content pada card yang tidak aktif */
+.geser .item:not(.active) .content {
+  display: none;
+}
+
+/* TAMBAHAN: tombol panah asli (bisa diklik di JS) */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 99;
+}
+
+.arrow img {
+  width: 48px; /* atur ukuran panah */
+  height: auto;
+}
+
+.arrow.left {
+  left: 15px;
+}
+.arrow.right {
+  right: 15px;
+}
+
+.arrow:hover img {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+/* MENGAPA MEMILIH KAMI */
+.why-section {
+  background-color: #fdf8f5;
+  padding: 80px 8%;
+  text-align: center;
+}
+
+.why-container {
+  display: flex;
+  gap: 30px;
+  margin-top: 70px;
+
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-behavior: smooth;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.why-container::-webkit-scrollbar {
+  display: none;
+}
+
+.why-card {
+  position: relative;
+  background: #fff;
+  padding: 50px 20px 30px;
+  /*⬅️Kembalikanpaddingbiarisitetaplega*/
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease;
+  flex: 0 0 250px;
+  margin-top: 40px;
+}
+
+.why-card:hover {
+  transform: translateY(-5px);
+}
+
+.why-icon {
+  position: absolute;
+  top: -40px; /* ⬅️ Benar-benar gantung di luar card */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: auto;
+}
+
+/* khusus sertifikasi */
+.why-card.sertifikasi .why-icon {
+  width: 115px; /* lebih besar dari default 60px */
+  top: -50px; /* geser sedikit supaya tetap rapi */
+}
+
+.why-card h3 {
+  margin-top: 5px; /* ⬅️ kecilkan lagi, biar teks lebih dekat icon */
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.why-card p {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* CONTACT */
+.contact-section {
+  padding: 80px 8%;
+  display: flex;
+  align-items: flex-start; /* sejajarkan atas */
+  gap: 40px; /* jarak kiri-kanan */
+}
+
+.contact-left {
+  padding-top: 10px;
+  max-width: 800px; /* batasi lebar */
+  margin: 0 auto; /* posisi tengah horizontal */
+  flex: 1;
+}
+
+.contact-right {
+  background-color: #f0ddc4; /* tan/kayu muda elegan */
+  box-shadow: 0 0 12px rgba(92, 58, 26, 0.2); /* shadow coklat */
+  border-radius: 10px;
+  padding: 30px;
+  flex: 1;
+}
+
+.contact-title {
+  font-size: 1.8rem;
+  color: #5f2c08; /* warna coklat kayu */
+  margin-bottom: 10px;
+}
+
+.contact-desc {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.contact-icon {
+  width: 35px;
+  height: auto;
+}
+
+.contact-item strong {
+  display: block;
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.contact-item p {
+  margin: 3px 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* CONTACT FORM (Sebelah Kanan) */
+
+/* Wrapper Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Setiap field */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #5f2c08;
+  margin-bottom: 8px;
+}
+
+/* Input dan Textarea */
+.contact-form input,
+.contact-form textarea {
+  background-color: #ffffff; /* putih */
+  border: none; /* hilangkan border */
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 15px;
+  outline: none; /* hilangkan garis fokus default */
+}
+
+/* Efek fokus */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #8b4513; /* coklat lebih gelap saat fokus */
+  box-shadow: 0 0 8px rgba(139, 69, 19, 0.4);
+}
+
+/* Tombol */
+.submit-btn {
+  background-color: #5f2c08;
+  color: #fff;
+  font-size: 1rem;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #8b4513;
+}
+
+/* Style Detail Meranti.html */
+/* Style Detail Meranti.html */
+.kayu-detail {
+  padding: 80px 8%;
+  background: #fff;
+  color: #333;
+}
+
+.detail-content {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* --- Gambar overlap setengah --- */
+.detail-images {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail-images img {
+  width: 320px; /* ukuran sedang */
+  height: 200px; /* sama semua */
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  position: absolute;
+  transition: transform 0.3s ease;
+}
+
+.detail-images img:first-child {
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.detail-images img:last-child {
+  top: 110px; /* sedikit turun */
+  left: 50px; /* geser kanan */
+  z-index: 2;
+}
+
+/* hover efek biar keren */
+.detail-images img:hover {
+  transform: scale(1.05);
+}
+
+.detail-text {
+  flex: 1.2;
+}
+
+.detail-text h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.detail-text p {
+  margin-bottom: 25px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.detail-text h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #444;
+}
+
+/* --- Spesifikasi dengan bullet points rapi --- */
+.spec-list {
+  list-style: none; /* bullet hilang */
+  padding-left: 0; /* opsional, biar lebih rapat ke kiri */
+  margin: 0;
+}
+
+.spec-list li {
+  display: flex; /* flex untuk label & value */
+  align-items: flex-start;
+  margin-bottom: 12px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.spec-list .label {
+  width: 140px; /* lebar fix, semua rata */
+  flex-shrink: 0;
+  color: #333;
+  position: relative;
+}
+
+.spec-list .label::after {
+  content: ":"; /* tambahkan titik dua otomatis */
+  position: absolute;
+  right: 0;
+}
+
+.spec-list .value {
+  flex: 1;
+  padding-left: 10px; /* jarak kecil dari titik dua */
+}
+
+/* FOOTER */
+footer {
+  background-color: #5c3a1a; /* coklat kayu gelap */
+  color: #f5f5f5; /* teks putih krem */
+  padding: 40px 8%;
+  font-size: 0.95rem;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 220px;
+}
+
+.footer-column h4 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #f0e6da; /* krem lembut */
+}
+
+.footer-column p {
+  margin: 0 0 10px;
+  line-height: 1.6;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+  color: #f5f5f5;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: #deb887; /* burlywood */
+}
+
+.footer-bottom {
+  width: 100%; /* pastikan penuh */
+  text-align: center; /* teks di tengah */
+  margin-top: 30px;
+  font-size: 0.85rem;
+  color: #ccc;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 20px;
+}
+
+/* Kontak dengan icon */
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.contact-item img {
+  width: 18px; /* ukuran icon */
+  height: 18px; /* biar sejajar */
+  flex-shrink: 0;
+  margin-top: 3px; /* biar rata dengan teks */
+}
+
+.contact-item span {
+  line-height: 1.6;
+  display: inline-block;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .geser .item {
+    flex: 0 0 80%; /* di HP biar lebih lebar */
+    height: 300px;
+  }
+}

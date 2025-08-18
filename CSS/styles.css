@@ -1,4 +1,4 @@
-/* 1. Reset dasar */
+/* RESET DASAR */
 *,
 *::before,
 *::after {
@@ -18,7 +18,7 @@ body {
   line-height: 1.5;
 }
 
-/* 2. Navbar */
+/* NAVBAR */
 .navbar {
   position: fixed; /* tetap di atas saat scroll */
   top: 0; /* posisinya di paling atas */
@@ -30,7 +30,7 @@ body {
   z-index: 1000; /* biar di atas elemen lain */
 }
 
-/* 3. Container untuk lebar & posisi */
+/* Container untuk lebar & posisi */
 .container {
   width: 90%; /* lebar isi */
   max-width: 1200px; /* batas maksimal */
@@ -40,7 +40,7 @@ body {
   align-items: center;
 }
 
-/* 4. Logo */
+/* Logo */
 .logo {
   height: 45px; /* tinggi logo */
   width: auto; /* biar proporsi tidak rusak */
@@ -48,7 +48,7 @@ body {
   vertical-align: middle; /* sejajarkan dengan teks */
 }
 
-/* 5. Brand (logo) */
+/* Brand (logo) */
 .navbar-brand {
   font-family: "Montserrat", sans-serif;
   font-weight: 700; /* bold */
@@ -60,7 +60,7 @@ body {
   gap: 8px; /* jarak antara logo & teks */
 }
 
-/* 6. Menu */
+/* Menu */
 .navbar-menu {
   list-style: none; /* hilangkan bullet */
   display: flex; /* sejajar ke kanan */
@@ -69,7 +69,7 @@ body {
   padding: 0;
 }
 
-/* 7. Link menu */
+/* Link menu */
 .nav-link {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
@@ -80,6 +80,44 @@ body {
 
 .nav-link:hover {
   color: #ff4d4d; /* ganti warna saat hover */
+}
+
+/* Hamburger default (hidden di desktop) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: black;
+  border-radius: 3px;
+}
+
+/* Responsive Navbar HP / Tablet */
+@media (max-width: 768px) {
+  .navbar-menu {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    width: 200px;
+    display: none;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-menu.active {
+    display: flex; /* muncul pas hamburger diklik */
+  }
+
+  .hamburger {
+    display: flex; /* tampilkan hamburger di HP */
+  }
 }
 
 /* HOME */
@@ -170,6 +208,59 @@ body {
   background: #e63939;
 }
 
+/* Responsive Home Hp / Tablet */
+@media (max-width: 1024px) {
+  .home-content h1 {
+    font-size: 2.2rem; /* lebih kecil biar muat */
+  }
+
+  .home-content .subtitle {
+    font-size: 1rem;
+  }
+
+  .btn-primary {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-section {
+    justify-content: center; /* ubah posisi biar tengah */
+    padding-right: 0; /* hilangin padding kanan */
+    text-align: center;
+  }
+
+  .home-content {
+    text-align: center; /* konten rata tengah */
+    margin-top: 60px; /* kurangi jarak atas */
+    max-width: 90%; /* biar lebih fleksibel */
+  }
+
+  .home-content h1 {
+    font-size: 1.8rem; /* lebih kecil */
+  }
+
+  .home-content .subtitle {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .home-content .subtitle {
+    font-size: 0.85rem;
+  }
+
+  .btn-primary {
+    padding: 8px 18px;
+    font-size: 0.85rem;
+  }
+}
+
 /* ABOUT US */
 .about-section {
   background-color: #fff;
@@ -222,7 +313,49 @@ body {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* ===== SERVICES SECTION ===== */
+/* Responsive About Us Hp / Tablet */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .about-text {
+    flex: 2;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .about-image {
+    flex: 1;
+    position: relative;
+    max-width: 150px; /* biar kecil kaya kartu remi */
+    height: 220px;
+  }
+
+  .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* biar proporsional */
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25); /* shadow lembut utk Gambar 1 */
+  }
+
+  .about-image img.overlay-photo {
+    position: absolute;
+    bottom: -15px;
+    left: -15px;
+    width: 100px; /* lebih kecil dari gambar utama */
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25); /* shadow utk Gambar 2 */
+  }
+}
+
+/* SERVICES */
 .product-section {
   padding: 60px 20px;
   max-width: 1200px;

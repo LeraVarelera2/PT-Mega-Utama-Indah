@@ -1,7 +1,7 @@
 const slider = document.querySelector(".slider");
 const totalSlides = document.querySelectorAll(".slide").length;
 let currentIndex = 0;
-const slideInterval = 3000; // 3 detik per slide
+const slideInterval = 2500; // 3 detik per slide
 
 function moveSlide() {
   currentIndex = (currentIndex + 1) % totalSlides;

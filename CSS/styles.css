@@ -16,6 +16,7 @@ body {
   padding-top: 60px; /* tinggi navbar kira-kira 60px */
   font-family: "Poppins", sans-serif;
   line-height: 1.5;
+  overflow-x: hidden;
 }
 
 /* NAVBAR */
@@ -67,6 +68,8 @@ body {
   gap: 20px; /* jarak antar menu */
   margin: 0;
   padding: 0;
+  max-width: 100vw; /* batasi lebar agar ga keluar layar */
+  overflow-x: hidden;
 }
 
 /* Link menu */
@@ -97,7 +100,7 @@ body {
   border-radius: 3px;
 }
 
-/* Responsive Navbar HP / Tablet */
+/* Responsive Navbar HP / Tablet SAMA AJA BELUM ADA SPASI ANTAR LOGO & JUDUL KE NAVBAR*/
 @media (max-width: 768px) {
   .navbar-menu {
     position: absolute;
@@ -117,6 +120,11 @@ body {
 
   .hamburger {
     display: flex; /* tampilkan hamburger di HP */
+    margin-left: 15px; /** tambah jarak antara teks brand dan hamburger **/
+  }
+
+  .navbar-brand {
+    flex: 1; /** biar brand ambil ruang tersisa dan hamburger tetap di kanan **/
   }
 }
 
@@ -551,14 +559,14 @@ body {
 
 .why-container {
   display: flex;
+  flex-wrap: wrap; /* biar card turun ke baris baru kalau nggak muat */
+  justify-content: center; /* rata tengah biar lebih rapi */
   gap: 30px;
   margin-top: 70px;
 
-  overflow-x: auto;
-  overflow-y: visible;
-  scroll-behavior: smooth;
-
-  -ms-overflow-style: none;
+  /* Hapus scroll */
+  overflow-x: unset; /* sebelumnya auto */
+  overflow-y: unset;
   scrollbar-width: none;
 }
 
@@ -570,11 +578,12 @@ body {
   position: relative;
   background: #fff;
   padding: 50px 20px 30px;
-  /*⬅️Kembalikanpaddingbiarisitetaplega*/
+  /* Kembalikan padding biar isi tetap lega*/
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   transition: transform 0.4s ease;
-  flex: 0 0 250px;
+  flex: 1 1 250px; /* minimal 250px, tapi bisa melebar */
+  max-width: 300px; /* biar tidak terlalu lebar */
   margin-top: 40px;
 }
 
@@ -584,7 +593,7 @@ body {
 
 .why-icon {
   position: absolute;
-  top: -40px; /* ⬅️ Benar-benar gantung di luar card */
+  top: -40px; /* Benar-benar gantung di luar card */
   left: 50%;
   transform: translateX(-50%);
   width: 60px;
@@ -598,7 +607,7 @@ body {
 }
 
 .why-card h3 {
-  margin-top: 5px; /* ⬅️ kecilkan lagi, biar teks lebih dekat icon */
+  margin-top: 5px; /* kecilkan lagi, biar teks lebih dekat icon */
   margin-bottom: 10px;
   font-size: 1.2rem;
   color: #333;

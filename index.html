@@ -78,7 +78,7 @@
       <div class="home-content">
         <h1>PT MEGA UTAMA INDAH</h1>
         <p class="subtitle">
-          Produsen kayu olahan berkualitas.
+          Produsen kayu olahan berkualitas
         </p>
         <a href="#contact" class="btn-primary">Contact</a>
       </div>
@@ -92,7 +92,7 @@
       <div class="about-container">
         <div class="about-text">
           <p>
-            PT Mega Utama Indah adalah perusahaan pengolahan dan ekspor kayu. Kami menyediakan produk berkualitas untuk kebutuhan furniture dan konstruksi, dengan proses produksi yang didukung teknologi modern serta tenaga kerja berpengalaman.
+            Sejak tahun 2000, PT Mega Utama Indah menjadi perusahaan pengolahan dan ekspor kayu. Kami menyediakan produk berkualitas untuk kebutuhan furniture dan konstruksi, dengan proses produksi yang didukung teknologi modern serta tenaga kerja berpengalaman.
           </p>
         </div>
 
@@ -304,43 +304,48 @@
         <p class="contact-desc"> Info product hubungi kami </p>
 
         <!-- 1. Phone -->
-        <div class="contact-item">
+        <!-- Bungkus contact-item dengan div klik -->
+        <!-- 1. Phone -->
+        <div class="contact-item phone" style="cursor:pointer;">
           <img src="images/call.png" alt="Phone" class="contact-icon" />
           <div>
             <strong>Phone Number</strong>
             <p>0811338966</p>
-            <p>0315468805</p>
-            <p>0315468806</p>
-            <p>0315457563</p>
+            <p>081332782788</p>
+            <p>085735541849</p>
           </div>
         </div>
 
         <!-- 2. Email -->
         <div class="contact-item">
-          <img src="images/email.png" alt="Email" class="contact-icon" />
+          <!-- Trigger popup -->
+          <img src="images/email.png" alt="Email" class="contact-icon" id="emailIcon" />
           <div>
-            <strong>Email Address</strong>
-            <p>megautamaindah@gmail.com</p>
-            <p>ptmui@hotmail.com</p>
+            <strong id="emailTrigger" style="cursor:pointer;">Email</strong>
+            <!-- alamat tetap muncul -->
+            <p id="emailTriggerText" style="cursor:pointer; color:#555;">
+              megautamaindah@gmail.com / ptmui@hotmail.com
+            </p>
           </div>
         </div>
 
         <!-- 3. Address -->
         <div class="contact-item">
-          <a href="https://maps.app.goo.gl/bGLeQVsi6kSyohXP9" target="_blank">
-            <img
-              src="images/location.png"
-              alt="Location"
-              class="contact-icon"
-            />
-          </a>
+          <img src="images/location.png" alt="Location" class="contact-icon" />
           <div>
             <strong>Alamat</strong>
             <p>
-              Factory : Pergudangan Bumi Maspion Jl Romokalisari Industri XIII
-              No. 17 Surabaya, Jawa Timur, Indonesia.
+              Factory : 
+              <a href="https://maps.app.goo.gl/bGLeQVsi6kSyohXP9" target="_blank">
+                Pergudangan Bumi Maspion Jl Romokalisari Industri XIII No. 17 Surabaya, Jawa Timur, Indonesia.
+              </a>
             </p>
-            <p>Office : Jl Pahlawan No 57 Surabaya, Jawa Timur, Indonesia</p>
+            <p>
+              Office : 
+              <a href="https://maps.app.goo.gl/bGLeQVsi6kSyohXP9" target="_blank">
+                Jl Pahlawan No 57 Surabaya, Jawa Timur, Indonesia
+              </a>
+            </p>
           </div>
         </div>
       </div>
@@ -403,6 +408,39 @@
       </div>
     </section>
 
+    <!-- Popup WhatsApp -->
+    <div id="waModal" class="wa-modal">
+      <div class="wa-modal-content">
+        <span class="wa-close">&times;</span>
+        <h3>Pilih Nomor WhatsApp</h3>
+        <ul class="wa-list">
+          <li><a href="https://wa.me/62811338966" target="_blank">0811 338 966</a></li>
+          <li><a href="https://wa.me/6281332782788" target="_blank">0813 3278 2788</a></li>
+          <li><a href="https://wa.me/6285735541849" target="_blank">0857 3554 1849</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Popup Email -->
+    <div id="emailModal" class="email-modal">
+      <div class="email-modal-content">
+        <span class="email-close">&times;</span>
+        <h3>Pilih Email Tujuan</h3>
+        <ul class="email-list">
+          <li>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=megautamaindah@gmail.com" target="_blank">
+              megautamaindah@gmail.com
+            </a>
+          </li>
+          <li>
+            <a href="https://outlook.live.com/mail/0/deeplink/compose?to=ptmui@hotmail.com" target="_blank">
+              ptmui@hotmail.com
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
     <!-- FOOTER -->
     <footer>
       <div class="footer-container">
@@ -434,7 +472,7 @@
           </div>
           <div class="contact-item">
             <img src="images/telp.png" alt="Telepon" />
-            <span>0811338966 | 0315468805 | 0315468806 | 0315457563</span>
+            <span>0811338966 | 081332782788 | 085735541849</span>
           </div>
           <div class="contact-item">
             <img src="images/mail.png" alt="Email" />
@@ -451,5 +489,6 @@
     <script src="geser.js"></script>
     <script src="slide.js"></script>
     <script src="toogle.js"></script>
+    <script src="ModalPopUp.js"></script>
   </body>
 </html>

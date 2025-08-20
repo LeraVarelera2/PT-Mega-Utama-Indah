@@ -22,9 +22,9 @@ window.onclick = (e) => {
 // Email Modal
 // ===== EMAIL MODAL =====
 const emailModal = document.getElementById("emailModal");
-const emailIcon = document.getElementById("emailIcon");
-const emailTrigger = document.getElementById("emailTrigger"); // <strong>Email</strong>
-const emailTriggerText = document.getElementById("emailTriggerText"); // teks alamat
+const emailTriggerContainer = document.querySelector(
+  ".contact-item.email-trigger"
+); // seluruh area
 const closeEmail = document.querySelector(".email-close");
 
 const openEmail = () => {
@@ -35,11 +35,12 @@ const closeEmailModal = () => {
   emailModal.style.display = "none";
 };
 
-// bikin semua area bisa klik
-[emailIcon, emailTrigger, emailTriggerText].forEach((el) => {
-  if (el) el.addEventListener("click", openEmail);
-});
+// klik seluruh area email
+if (emailTriggerContainer) {
+  emailTriggerContainer.addEventListener("click", openEmail);
+}
 
+// tombol close
 closeEmail.addEventListener("click", closeEmailModal);
 
 // klik di luar modal nutup

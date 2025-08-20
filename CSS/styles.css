@@ -689,6 +689,14 @@ body {
   color: inherit;
 }
 
+.address-link {
+  display: flex; /* biar icon dan teks tetap sejajar */
+  align-items: flex-start;
+  text-decoration: none; /* hilangkan underline */
+  color: inherit; /* warna teks ikut default */
+  cursor: pointer;
+}
+
 /* Popup Email */
 .email-modal {
   display: none;
@@ -728,14 +736,19 @@ body {
   margin: 10px 0;
 }
 
-.email-list a {
+.email-list li a {
   display: block;
-  padding: 10px;
-  background: #0072c6; /* warna biru Outlook/Gmail */
+  background: #0a66c2; /* biru */
   color: white;
-  border-radius: 8px;
   text-decoration: none;
+  padding: 12px 20px; /* kasih padding kiri-kanan lebih besar */
+  border-radius: 8px;
+  margin-bottom: 10px;
   font-weight: bold;
+  text-align: center;
+  width: 100%; /* biar lebar penuh */
+  box-sizing: border-box; /* supaya padding tetap masuk perhitungan */
+  word-break: break-all; /* antisipasi kalau email kepanjangan */
 }
 
 .email-list a:hover {
